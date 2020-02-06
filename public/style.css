@@ -33,9 +33,17 @@ main{
 
 }
 
+#header #navigation .link.active{
+    color: #00ff00;
+}
+
+#header #navigation .link.usercontrols.active{
+    color: aqua;
+}
+
 #header #navigation .link.username{
     margin-left: 2rem;
-    color: aqua;
+    color: rgba(255,255,255,0.6);
 }
 
 #header #navigation .link.username:hover{
