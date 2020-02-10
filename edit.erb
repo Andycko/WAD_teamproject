@@ -1,0 +1,8 @@
+<h3>This is EDIT page</h3>
+<p>Please feel free to edit!</p>
+<form action="/edit" method="post" id="edit">
+    <input type="hidden" name="_method" value="put">
+    <textarea oninput="auto_grow(this)"><%=$myInfo%></textarea>
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="Edit!">
+</form>

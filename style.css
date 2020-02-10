@@ -1,0 +1,173 @@
+html, body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+main{
+    padding: 0 30px;
+}
+
+textarea {
+    resize: none;
+    overflow: hidden;
+    min-height: 100px;
+    max-height: 200px;
+}
+
+#header{
+    padding: 0 30px;
+    background: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+#header h1{
+    font-size: 2rem;
+    font-family: monospace;
+    font-weight: bolder
+}
+
+#header #navigation .link{
+    font-size: 1.4rem;
+    padding: 0 20px;
+    text-decoration: none;
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    position: relative;
+
+}
+
+#header #navigation .link.active{
+    color: #00ff00;
+}
+
+#header #navigation .link.usercontrols.active{
+    color: aqua;
+}
+
+#header #navigation .link.username{
+    margin-left: 2rem;
+    color: rgba(255,255,255,0.6);
+}
+
+#header #navigation .link.username:hover{
+    color: aqua;
+}
+
+#header #navigation .link.usercontrols:before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: white;
+    left: -2px
+}
+
+#header #navigation .link.usercontrols:hover{
+    color: aqua;
+}
+
+#header #navigation .link:hover{
+    color: #00ff00;
+}
+
+main #login_wrap{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.6);
+    transition: 0.1s ease-in-out;
+}
+
+main #login_wrap.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+main #login_wrap .login_window .error_text{
+    opacity: 0;
+    color: red;
+    transition: 0.1s ease-in-out;
+}
+
+main #login_wrap.false .login_window .error_text{
+    opacity: 1;
+}
+
+main #login_wrap .login_window{
+    padding: 1rem 3rem;
+    position: relative;
+    z-index: 5;
+    background-color: white;
+    border: 6px solid black;
+    border-radius: 15px;
+    color: black;
+}
+
+main #login_wrap .login_window h2{
+    font-size: 1.8rem;
+    font-family: monospace;
+    font-weight: bolder;
+}
+
+main #login_wrap .login_window .text-input{
+    border: none;
+    border-bottom: 2px solid black;
+    background: none;
+    width: 80%;
+    margin-bottom: 2rem;
+    color: black;
+    font-size: 1.2rem;
+    font-family: monospace;
+    transition: 0.15s ease-in-out;
+}
+
+main #login_wrap .login_window .button{
+    border: black 2px solid;
+    padding: 0.25rem 1rem;
+    background-color: black;
+    transition: 0.15s ease-in-out;
+    font-size: 1.2rem;
+    color:white;    
+    margin-top: 1rem;
+    font-family: monospace;
+}
+
+main #login_wrap .login_window .button:active{
+    color: #00ff00
+}
+
+main #login_wrap .login_window .text-input:hover, main #login_wrap .login_window .text-input:focus{
+    outline: none;
+    border-color: #00ff00;
+}
+
+main #login_wrap .login_window #no_login{
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+}
+
+main #login_wrap .login_window #close_login{
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: black;
+    transition: 0.15s ease-in-out;
+}
+
+main #login_wrap .login_window #close_login:hover{
+    color: #00ff00;
+    transform: scale(1.1);
+}

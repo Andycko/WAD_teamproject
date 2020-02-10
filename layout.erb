@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wiki</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Wiki web application" />
+        <meta name="keywords" content="wiki, test app, blog" />
+        <link rel="stylesheet" href="/style.css" type="text/css" />
+        <script type="text/javascript">
+            <%#Attempt to auto resize the box%>
+            function auto_grow(element) {
+                element.style.height = "5px";
+                element.style.height = (element.scrollHeight+20)+"px";
+            }
+        </script>
+    </head>
+    <body>
+        <header id="header">
+            <h1>This is my Wiki app</h1>
+            <nav id="navigation">
+                <a href="/" class="link" >Home</a>
+                <a href="/about" class="link" >About</a>
+                <% if $credentials %> 
+                    <% if $credentials[0] != '' %> 
+                        <%  @Userz = User.where(:username => $credentials[0]).to_a.first
+                            if @Userz.edit == true %><a href="/edit" class="link" >Edit</a><% end %>
+                        <a href="/user/<%= $credentials[0] %>" class="link username"><%= $credentials[0] %></a>  
+                        <% if $credentials[0] == "Admin" %> 
+                            <a href="/admincontrols" class="link usercontrols">Admin Controls</a> 
+                        <% end %>
+                        <a href="/logout" class="link usercontrols">Logout</a>  
+                    <% else %> 
+                        <a id="login_link" class="link">Login</a> 
+                    <% end %> 
+                <% else %> 
+                    <a id="login_link" class="link">Login</a> 
+                <% end %> 
+            </nav>
+        </header>
+        <main>
+            <div id="login_wrap" class="<%= $login %>">
+                <div class="login_window">
+                    <h2>Welcome!</h2><br> 
+                    <form id="no_login" action="/no_login" method="post">
+                        <input id="close_login" type="submit" value="x">
+                    </form>
+                    <form action="/login" method="post">   
+                        <input class="text-input" type="text" name="username" placeholder="Username"><br> 
+                        <input class="text-input" type="password" name="password" placeholder="Password"><br> 
+                        <input class="button" type="submit" value="Login">   
+                    </form>   
+                    <p class="error_text">The username and password do not match!</p>
+                    <p>Don't have an account? <a href="/createaccount">Create Account</a></p> 
+                </div>
+            </div>
+            <%#Possibly create a Create Account prompt here? %>
+            <%= yield %>
+        </main>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+        </script>
+        <script src="app.js"></script>
+    </body>
+</html>
+
