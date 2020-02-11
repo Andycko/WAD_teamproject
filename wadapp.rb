@@ -225,5 +225,6 @@ post "/default" do
     protected!
     File.open("name.txt") do |line|
         line.puts "Andrew"
+    end
     redirect "/"
 end
