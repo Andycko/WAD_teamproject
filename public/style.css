@@ -7,6 +7,13 @@ main{
     padding: 0 30px;
 }
 
+textarea {
+    resize: none;
+    overflow: hidden;
+    min-height: 100px;
+    max-height: 200px;
+}
+
 #header{
     padding: 0 30px;
     background: black;
