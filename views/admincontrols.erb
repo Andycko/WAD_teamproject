@@ -3,13 +3,24 @@
 <h2><b>Edit or override past changes</b></h2>
 <form action="/edit" method="post" id="edit">
     <input type="hidden" name="_method" value="put">
-    <textarea oninput="auto_grow(this)"><%=$myInfo%></textarea>
+    <textarea name="message" oninput="auto_grow(this)"><%=$myInfo%></textarea>
     <input type="hidden" name="_method" value="put">
-    <input type="submit" value="Edit!">
+    <input type="submit" value="Edit">
 </form>
 
+<h2><b>List of Made Changes</b></h2>
+<!---Option to list changes by user and time.><table id = "wikichanges">
+<tr>
+    <th>User</th>
+    <th>Timestamp</th>
+    <th>View Changes</th>
+    <th>Revert Changes</th>
+</tr>
+</table>
+
+</!--->
 <h2><b>User list</b></h2>
-<table id = "wadtable">
+<table id = "users">
 <tr>
     <th>Username</th>
     <th>Date Joined</th>
@@ -17,20 +28,18 @@
     <th>Delete</th>
 </tr>
 <% @list2.each do |liste| %>
-<br>
-    <tr>
-    <td><%= liste.username %></td> <td><%= liste.created_at %></td> <td><%= liste.edit %>
+    <tr><td><%= liste.username %></td> <td><%= liste.created_at %></td> <td><%= liste.edit %>
     <% if liste.username != "Admin" %>  
         <form action="/user/<%= liste.username %>" method="post" id="edit">
-                <input type="hidden" name="_method" value="put"> 	 
+                <input type="hidden" name="_method" value="put">
                 <input type="checkbox" name="edit" <%= "checked" if liste.edit %>>
-                <input type="submit" value="Allow Edit?">
+                <input type="submit" value="Allow Edit">
           </form></td>
       <% end %>
       <td><% if liste.username != "Admin" %> 
-            <a href="/user/delete/<%= liste.username %>">Delete User?</a> 
+            <a href="/user/delete/<%= liste.username %>">Delete User</a> 
           <% end %></td>
-    </tr>   
+    </tr>
 <% end %>
 </table>
 

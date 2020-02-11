@@ -32,7 +32,7 @@ end
 
 get "/" do
     info = "Hello there!"
- 	readFile("name.txt")
+ 	readFile("home.txt")
 	@info = info + " " + $myInfo
     @wordcount = @info.split.size
     @charactercount = @info.size #For now counts all possible characters(including html tags), but this is a bit irrelevant atm.
@@ -96,7 +96,7 @@ put "/edit" do
     protected!
     info = "#{params[:message]}"
     @info = info
-    file = File.open("name.txt","w")
+    file = File.open("home.txt","w")
     file.puts @info
     file.close
     redirect "/"
@@ -211,20 +211,20 @@ end
 
 post "/archive" do
     protected!
-    IO.copy_stream('name.txt', 'archive.txt')
+    IO.copy_stream('home.txt', 'archive.txt')
+    time = Time.now
+    IO.copy_stream("home.txt","archived_pages/#{time.strftime("%Y-%m-%d_%H%M%S")}.txt")
     redirect "/"
 end
 
 post "/restore" do
     protected!
-    IO.copy_stream('archive.txt', 'name.txt')
+    IO.copy_stream('archive.txt', 'home.txt')
     redirect "/"
 end
 
 post "/default" do
     protected!
-    File.open("name.txt") do |line|
-        line.puts "Andrew"
-    end
+    IO.copy_stream("default.txt","home.txt")
     redirect "/"
 end

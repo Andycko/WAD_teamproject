@@ -7,11 +7,14 @@ main{
     padding: 0 30px;
 }
 
-textarea {
-    resize: none;
-    overflow: hidden;
-    min-height: 100px;
-    max-height: 200px;
+textarea {
+    resize: both;
+    overflow: auto;
+    outline: none;
+    min-height: 50%;
+    max-height: 100%;
+    min-width:60%;
+    max-width:100%;
 }
 
 #header{
