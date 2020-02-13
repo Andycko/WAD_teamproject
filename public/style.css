@@ -1,35 +1,33 @@
 html, body{
     margin: 0;
-    font-family: Arial, sans-serif;
+    min-height: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
-main{
-    padding: 0 30px;
+body{
+    padding-top: 120px;
+    background: url("assets/wallpaper.jpg");
+    background-position: top;
+    background-size: cover;
 }
 
-textarea {
-    resize: both;
-    overflow: auto;
-    outline: none;
-    min-height: 50%;
-    max-height: 100%;
-    min-width:60%;
-    max-width:100%;
+h3{
+    font-size: 2rem;
 }
 
 #header{
-    padding: 0 30px;
-    background: black;
+    position: absolute;
+    top: 0;
+    padding: 0.8rem 30px;
+    background: transparent;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     color: white;
 }
-#header h1{
-    font-size: 2rem;
-    font-family: monospace;
-    font-weight: bolder
+#header .logo{
+    width: 20%;
 }
 
 #header #navigation .link{
@@ -44,20 +42,12 @@ textarea {
 }
 
 #header #navigation .link.active{
-    color: #00ff00;
-}
-
-#header #navigation .link.usercontrols.active{
-    color: aqua;
+    color: red;
 }
 
 #header #navigation .link.username{
     margin-left: 2rem;
     color: rgba(255,255,255,0.6);
-}
-
-#header #navigation .link.username:hover{
-    color: aqua;
 }
 
 #header #navigation .link.usercontrols:before{
@@ -69,12 +59,13 @@ textarea {
     left: -2px
 }
 
-#header #navigation .link.usercontrols:hover{
-    color: aqua;
+#header #navigation .link:hover{
+    color: red;
 }
 
-#header #navigation .link:hover{
-    color: #00ff00;
+main{
+    padding: 0 40px;
+    color: white
 }
 
 main #login_wrap{
@@ -115,6 +106,11 @@ main #login_wrap .login_window{
     border: 6px solid black;
     border-radius: 15px;
     color: black;
+    display: flex;
+    flex-direction: column;
+    width: 16rem;
+    height: 22rem;
+    overflow: hidden;
 }
 
 main #login_wrap .login_window h2{
@@ -147,12 +143,12 @@ main #login_wrap .login_window .button{
 }
 
 main #login_wrap .login_window .button:active{
-    color: #00ff00
+    color: red;
 }
 
 main #login_wrap .login_window .text-input:hover, main #login_wrap .login_window .text-input:focus{
     outline: none;
-    border-color: #00ff00;
+    border-color: red;
 }
 
 main #login_wrap .login_window #no_login{
@@ -171,6 +167,146 @@ main #login_wrap .login_window #close_login{
 }
 
 main #login_wrap .login_window #close_login:hover{
-    color: #00ff00;
+    color: red;
     transform: scale(1.1);
+}
+
+main #login_wrap .login_window .row{
+    width: 40rem;
+    position: absolute;
+    justify-content: space-between;
+    display: flex;
+    bottom: 20px;
+}
+
+main #login_wrap .login_window a{
+    color: red;
+    cursor: pointer;
+}
+
+main #login_wrap .login_window .row.register{
+    transform: translateX(-23rem);
+}
+
+main #edit_wrap #edit_area {
+    resize: none;
+    min-height: 50%;
+    max-height: 400px;
+    min-width:60%;
+    max-width:100%;
+    border-radius: 10px;
+    border: white solid 2px;
+    padding: 1rem;
+    background: transparent;
+    color: white;
+    outline: none
+}
+
+main #edit_wrap h3{
+    font-size: 2rem;
+}
+
+main #edit_wrap #edit .button{
+    margin-top: 2rem;
+    border: white 2px solid;
+    padding: 0.25rem 1rem;
+    background-color: white;
+    transition: 0.15s ease-in-out;
+    font-size: 1.2rem;
+    color:black;    
+    font-family: monospace;
+    display: block;
+}
+
+main #user_wrap p{
+    margin-left: 2rem;
+    font-size: 1.3rem
+}
+
+main #home_wrap .wiki_content{
+    max-width: 60%;
+    line-height: 2rem;
+}
+
+main #home_wrap ::selection{
+    background-color: white;
+    color: black;
+}
+
+main #home_wrap .wiki_content a{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+main #home_wrap .wiki_content a:hover{
+    color: red;
+}
+
+main #home_wrap span{
+    display: block;
+    font-weight: lighter;
+    margin-top: 0.5rem
+}
+
+main #home_wrap span:first-of-type{
+    margin-top: 3rem;
+}
+
+main .names_list{
+    margin-left: 2rem;
+    font-size: 1.3rem;
+}
+
+main #admin_wrap table{
+    margin-left: 2rem
+}
+
+main #admin_wrap table th{
+    padding: 0.5rem 1.5rem;
+    text-align: left;
+}
+
+main #admin_wrap table td{
+    padding: 0.5rem 1.5rem;
+    text-align: left;
+}
+
+main #admin_wrap .controls_wrap{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+main #admin_wrap .col{
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem; 
+}
+
+main #admin_wrap .content_management_wrap{
+    display: flex;
+    margin-top: 3rem;
+    margin-left: 2rem; 
+    flex-direction: column;
+}
+
+main #admin_wrap .content_management{
+    display: flex;
+    margin-left: 4rem;
+    justify-content: space-between;
+}
+
+
+main #admin_wrap .controls_wrap .button{
+    padding: 0.5rem 3rem;
+    background-color: white;
+    font-family: monospace;
+    font-size: 1.5rem;
+    border:2px white solid;
+}
+
+main #admin_wrap .controls_wrap .button:hover{
+    color: red;
 }

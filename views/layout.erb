@@ -7,17 +7,12 @@
         <meta name="description" content="Wiki web application" />
         <meta name="keywords" content="wiki, test app, blog" />
         <link rel="stylesheet" href="/style.css" type="text/css" />
-        <script type="text/javascript">
-            <%#Attempt to auto resize the box%>
-            function auto_grow(element) {
-                element.style.height = "5px";
-                element.style.height = (element.scrollHeight+20)+"px";
-            }
-        </script>
+        <link href="https://fonts.googleapis.com/css?family=Odibee+Sans|Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">
+
     </head>
     <body>
         <header id="header">
-            <h1>This is my Wiki app</h1>
+            <img class="logo" src="/assets/Mr._Robot_Logo.svg" alt="Mr.Robot logo">
             <nav id="navigation">
                 <a href="/" class="link" >Home</a>
                 <a href="/about" class="link" >About</a>
@@ -41,17 +36,30 @@
         <main>
             <div id="login_wrap" class="<%= $login %>">
                 <div class="login_window">
-                    <h2>Welcome!</h2><br> 
+                    <h2>Welcome back!</h2><br> 
                     <form id="no_login" action="/no_login" method="post">
                         <input id="close_login" type="submit" value="x">
                     </form>
-                    <form action="/login" method="post">   
-                        <input class="text-input" type="text" name="username" placeholder="Username"><br> 
-                        <input class="text-input" type="password" name="password" placeholder="Password"><br> 
-                        <input class="button" type="submit" value="Login">   
-                    </form>   
-                    <p class="error_text">The username and password do not match!</p>
-                    <p>Don't have an account? <a href="/createaccount">Create Account</a></p> 
+                    <div class="row">
+                        <div class="login">
+                            <form action="/login" method="post">   
+                                <input class="text-input" type="text" name="username" placeholder="Username"><br> 
+                                <input class="text-input" type="password" name="password" placeholder="Password"><br> 
+                                <input class="button" type="submit" value="Login">   
+                            </form>   
+                            <p class="error_text">The username and password do not match!</p>
+                            <p>Don't have an account? <a id="register_btn">Create Account</a></p> 
+                        </div>
+                        <div class="register">
+                            <form action="/createaccount" method="post">   
+                                <input class="text-input" type="text" name="username" placeholder="Username"><br> 
+                                <input class="text-input" type="password" name="password" placeholder="Password"><br> 
+                                <input class="button" type="submit" value="Register">   
+                            </form>   
+                            <p class="error_text">The username and password do not match!</p>
+                            <p>Already have an account? <a id="login_btn">Log in</a></p> 
+                        </div>
+                    </div>
                 </div>
             </div>
             <%#Possibly create a Create Account prompt here? %>

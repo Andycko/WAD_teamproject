@@ -1,9 +1,9 @@
 <h3>User</h3> 
 <% if @Userz %>  
- <article> 
-	  	<p>Name: <%= @Userz.username %></p> 
-	  	<p>Created: <%= @Userz.created_at %></p> 
-	  	<p>Last updated: <%= @Userz.updated_at %></p> 
-	  	<p>Edit status: <%= @Userz.edit %></p> 
- </article> 
+	<div id="user_wrap">
+	  	<p><strong>Name:</strong> <%= @Userz.username %></p> 
+	  	<p><strong>Created:</strong> <%= @Userz.created_at %></p> 
+	  	<p><strong>Last updated:</strong> <%= @Userz.updated_at %></p> 
+	  	<p><strong>Edit status:</strong> <%= @Userz.edit %></p> 
+	</div> 
 <% end %>

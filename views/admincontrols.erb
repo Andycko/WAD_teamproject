@@ -1,67 +1,76 @@
-<h3>Admin controls page</h3> 
-
-<h2><b>Edit or override past changes</b></h2>
-<form action="/edit" method="post" id="edit">
-    <input type="hidden" name="_method" value="put">
-    <textarea name="message" oninput="auto_grow(this)"><%=$myInfo%></textarea>
-    <input type="hidden" name="_method" value="put">
-    <input type="submit" value="Edit">
-</form>
-
-<h2><b>List of Made Changes</b></h2>
-<!---Option to list changes by user and time.><table id = "wikichanges">
-<tr>
-    <th>User</th>
-    <th>Timestamp</th>
-    <th>View Changes</th>
-    <th>Revert Changes</th>
-</tr>
-</table>
-
-</!--->
-<h2><b>User list</b></h2>
-<table id = "users">
-<tr>
-    <th>Username</th>
-    <th>Date Joined</th>
-    <th>Edit</th>
-    <th>Delete</th>
-</tr>
-<% @list2.each do |liste| %>
-    <tr><td><%= liste.username %></td> <td><%= liste.created_at %></td> <td><%= liste.edit %>
-    <% if liste.username != "Admin" %>  
-        <form action="/user/<%= liste.username %>" method="post" id="edit">
-                <input type="hidden" name="_method" value="put">
-                <input type="checkbox" name="edit" <%= "checked" if liste.edit %>>
-                <input type="submit" value="Allow Edit">
-          </form></td>
-      <% end %>
-      <td><% if liste.username != "Admin" %> 
-            <a href="/user/delete/<%= liste.username %>">Delete User</a> 
-          <% end %></td>
+<div id="admin_wrap">
+    <!---Option to list changes by user and time.>
+    <h2><b>List of Made Changes</b></h2>
+    <table id = "wikichanges">
+    <tr>
+        <th>User</th>
+        <th>Timestamp</th>
+        <th>View Changes</th>
+        <th>Revert Changes</th>
     </tr>
-<% end %>
-</table>
+    </table>
 
-<h2><b>Create account</b></h2>
-<form action="/createaccount" method="post">   
-    <input class="text-input" type="text" name="username" placeholder="Username"><br> 
-    <input class="text-input" type="password" name="password" placeholder="Password"><br> 
-    <input class="button" type="submit" value="Submit">   
-</form>
+    </!--->
+    <div class="controls_wrap">
+        <div class="col">
+            <h3>User list</h3>
+            <table id="users">
+            <tr>
+                <th>Username</th>
+                <th>Date Joined</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <% @list2.each do |liste| %>
+                <tr>
+                    <td><%= liste.username %></td>
+                    <td><%= liste.created_at %></td>
+                    <td>
+                        <% if liste.username != "Admin" %>  
+                            <form action="/user/<%= liste.username %>" method="post" id="edit">
+                                <input type="hidden" name="_method" value="put">
+                                <input type="checkbox" name="edit" <%= "checked" if liste.edit %>>
+                                <input type="submit" value="Allow Edit">
+                            </form>
+                        <% else %>
+                            <span>SUPER USER</span>
+                        <% end %>
+                    </td>
+                    <td>
+                        <% if liste.username != "Admin" %> 
+                            <a href="/user/delete/<%= liste.username %>">Delete User</a> 
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+            </table>
+        </div>
 
+        
+        <div class="content_management_wrap">
+            <h3>Wiki content management</h3>
+            <div class="content_management">
+                <form action="/archive" method="post">   
+                    <input class="button" type="submit" value="Archive">   
+                </form>
 
-<h2><b>Archive Homepage</b></h2>
-<form action="/archive" method="post">   
-    <input class="button" type="submit" value="Archive">   
-</form>
+                <form action="/restore" method="post">   
+                    <input class="button" type="submit" value="Restore">   
+                </form>
 
-<h2><b>Restore from Backup</b></h2>
-<form action="/restore" method="post">   
-    <input class="button" type="submit" value="Restore">   
-</form>
+                <form action="/default" method="post">   
+                    <input class="button" type="submit" value="Default">   
+                </form>
+            </div>
+        </div>
+    </div>
 
-<h2><b>Restore to Default</b></h2>
-<form action="/default" method="post">   
-    <input class="button" type="submit" value="Default">   
-</form>
+    <!--- I dont like it here -Andrej>
+    <h2><b>Create new accounts</b></h2>
+    <form action="/createaccount" method="post">   
+        <input class="text-input" type="text" name="username" placeholder="Username"><br> 
+        <input class="text-input" type="password" name="password" placeholder="Password"><br> 
+        <input class="button" type="submit" value="Submit">   
+    </form>
+    </!--->
+</div>

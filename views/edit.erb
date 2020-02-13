@@ -1,8 +1,9 @@
-<h3>This is EDIT page</h3>
-<p>Please feel free to edit responsibly.</p>
-<form action="/edit" method="post" id="edit">
-    <input type="hidden" name="_method" value="put">
-    <textarea oninput="auto_grow(this)" name="message"><%=$myInfo%></textarea>
-    <input type="hidden" name="_method" value="put">
-    <input type="submit" value="Edit">
-</form>
+<div id="edit_wrap">
+    <h3>Please feel free to edit responsibly.</h3>
+    <form action="/edit" method="post" id="edit">
+        <input type="hidden" name="_method" value="put">
+        <textarea id="edit_area" name="message"><%=$myInfo%></textarea>
+        <input type="hidden" name="_method" value="put">
+        <input class="button" type="submit" value="Edit">
+    </form>
+</div>

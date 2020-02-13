@@ -27,13 +27,12 @@ def readFile(filename)
         info = info + line
     end
     file.close
-    $myInfo = info
+    return info
 end
 
 get "/" do
-    info = "Hello there!"
- 	readFile("home.txt")
-	@info = info + " " + $myInfo
+    $myInfo = readFile("home.txt")
+	@info = $myInfo
     @wordcount = @info.split.size
     @charactercount = @info.size #For now counts all possible characters(including html tags), but this is a bit irrelevant atm.
 	erb :home

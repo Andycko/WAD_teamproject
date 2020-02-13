@@ -13,9 +13,27 @@ $( document ).ready(function() {
         $('#login_wrap').removeClass('active');        
     }
     
+    $("#register_btn").click(function() {
+        $(".row").addClass("register")
+    });
+
+    $("#login_btn").click(function() {
+        $(".row").removeClass("register")
+    });
+
     $('a').each(function(){
         if ($(this).prop('href') == window.location.href) {
             $(this).addClass('active'); $(this).parents('li').addClass('active');
         }
     });
+
+    $('#edit_area').each(function() {
+        this.style.height = 'auto'; 
+        this.style.height = (this.scrollHeight) + 'px'; 
+    }); 
+
+    $('#edit_area').on('input', function () { 
+        this.style.height = 'auto';   
+        this.style.height = (this.scrollHeight) + 'px'; 
+    }); 
 });
